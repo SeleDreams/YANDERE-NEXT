@@ -2,6 +2,7 @@ using GameKnowledgeBase;
 using System;
 using System.IO;
 using Hooker.util;
+using Hooker.src.util;
 
 namespace Hooker
 {
@@ -33,80 +34,25 @@ namespace Hooker
 			}
 		}
 
-		static bool Download()
-		{
-			return false;
-		}
-		// Prepares the files for the mod engine to work without manual operations.
-		static bool PrepareMod()
-		{
-			string dataDir = Environment.CurrentDirectory + "\\YandereSimulator_Data";
-			bool rightDir = Directory.Exists(dataDir);
-			if (!rightDir)
-			{
-				Console.WriteLine("Yandere Simulator not located in the directory.");
-				Console.WriteLine("Do you want to download the latest version of the game ?");
-				bool ok = false;
-				do
-				{
-					Console.WriteLine("Input Y to confirm, Input N to quit.");
-					string response = Console.ReadLine();
-
-					switch (response)
-					{
-						case "Y":
-						case "y":
-							bool result = Download();
-							if (result)
-							{
-								ok = true;
-							}
-							Console.WriteLine("failed to download");
-							break;
-						case "N":
-						case "n":
-							Environment.Exit(1);
-							break;
-						default:
-							Console.WriteLine("Entry not recognized");
-							break;
-					}
-				} while (!ok);
-
-				Environment.Exit(1);
-			}
-			var YanNext_Dir = Directory.CreateDirectory(dataDir + "\\StreamingAssets\\YANDERE_NEXT");
-			Directory.CreateDirectory(YanNext_Dir.FullName + "\\" + "Mods");
-			Directory.CreateDirectory(YanNext_Dir.FullName + "\\" + "Plugins");
-			Directory.CreateDirectory(YanNext_Dir.FullName + "\\" + "Debug");
-
-			if (!File.Exists(YanNext_Dir.FullName + "\\Settings.json"))
-			{
-				File.Create(YanNext_Dir.FullName + "\\Settings.json");
-			}
-			return true;
-
-		}
+		
+		
 		static string[] CustomArgs(string[] args)
 		{
 			if (args.Length <= 0)
 			{
 				string[] hook = new string[] {"hook",
-				"-d",Environment.CurrentDirectory,
+				"-d",Environment.CurrentDirectory + "\\YandereSimulator",
 				"-h", Environment.CurrentDirectory + "\\YandereHook",
 				"-l",Environment.CurrentDirectory + "\\NextLib.dll"
 			};
 				string[] unhook = new string[] {"restore",
-				"-d",Environment.CurrentDirectory
+				"-d",Environment.CurrentDirectory + "\\YandereSimulator"
 			};
 				if (!File.Exists(Environment.CurrentDirectory + "\\hooked"))
 				{
 					try
 					{
-						using (File.Create(Environment.CurrentDirectory + "\\hooked"))
-						{
-
-						}
+						File.Create(Environment.CurrentDirectory + "\\hooked");
 					}
 					catch (Exception ex)
 					{
@@ -138,7 +84,21 @@ namespace Hooker
 		}
 		static int Main(string[] args)
 		{
-			PrepareMod();
+			if (File.Exists(Environment.CurrentDirectory + "\\hooked"))
+			{
+				var process = new System.Diagnostics.Process();
+				var startInfo = new System.Diagnostics.ProcessStartInfo
+				{
+					FileName = Environment.CurrentDirectory + "\\YandereSimulator\\YandereSimulator.exe"
+				};
+				process.StartInfo = startInfo;
+				process.Start();
+				
+				return 0;
+			}
+			YanderePrepare.PrepareMod();
+			YanderePrepare.GetSceneNames();
+			YanderePrepare.GetResourcesNames();
 			string[] actions = CustomArgs(args);
 			// Operation
 			string invokedOperation = "";
