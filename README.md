@@ -1,4 +1,4 @@
-#Yandere Next
+# Yandere Next
 Yandere Next is a project meant to improve the modding experience for the game Yandere Simulator
 
 Every feature included is made with the user experience in mind, whether it is for modders or end-users.
