@@ -151,11 +151,6 @@ namespace Hooker.src.util
 								rest += 12;
 								break;
 						}
-						/*else if (rest == 10)
-						{
-							rest += 2;
-						}*/
-
 
 						if (size < 256)
 						{
@@ -175,8 +170,8 @@ namespace Hooker.src.util
 						}
 
 					}
-					File.WriteAllLines(Environment.CurrentDirectory + "\\resources.txt", scenesArray);
-					Console.ReadLine();
+					File.WriteAllLines(Environment.CurrentDirectory + "\\Resources.txt", scenesArray);
+					//Console.ReadLine();
 				}
 
 				return true;
@@ -240,7 +235,7 @@ namespace Hooker.src.util
 		// Prepares the files for the mod engine to work without manual operations.
 		public static bool PrepareMod()
 		{
-			string YanSimDir = Directory.CreateDirectory(Environment.CurrentDirectory + "YandereSimulator").FullName;
+			string YanSimDir = Directory.CreateDirectory(Environment.CurrentDirectory + "\\YandereSimulator").FullName;
 			string dataDir = YanSimDir + "\\YandereSimulator_Data";
 			bool rightDir = Directory.Exists(dataDir) && File.Exists(YanSimDir + "\\YandereSimulator.exe");
 			if (!rightDir)
@@ -255,6 +250,11 @@ namespace Hooker.src.util
 			if (!File.Exists(YanNext_Dir.FullName + "\\Settings.json"))
 			{
 				File.Create(YanNext_Dir.FullName + "\\Settings.json");
+			}
+			string moonsharp_dll = "\\MoonSharp.Interpreter.dll";
+			if (File.Exists(Environment.CurrentDirectory + moonsharp_dll))
+			{
+				File.Copy(Environment.CurrentDirectory + moonsharp_dll, dataDir + "\\Managed\\" + moonsharp_dll,true);
 			}
 			return true;
 

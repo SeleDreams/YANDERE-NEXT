@@ -7,7 +7,7 @@ namespace Hooks
 
 		public Hook()
 		{
-			HookRegistry.Register(YandereNext.ModLoader.StartHook);
+			HookRegistry.Register(YandereNext.YandereNextEngine.StartHook);
 		}
 
 		// private void InitDynamicTypes() { }

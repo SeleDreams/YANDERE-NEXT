@@ -34,20 +34,26 @@ namespace Hooker
 			}
 		}
 
-		
-		
+
+
 		static string[] CustomArgs(string[] args)
 		{
-			if (args.Length <= 0)
+			foreach (string s in args)
 			{
-				string[] hook = new string[] {"hook",
+				Console.Write(s + " ");
+			}
+			string[] hook = new string[] {"hook",
 				"-d",Environment.CurrentDirectory + "\\YandereSimulator",
 				"-h", Environment.CurrentDirectory + "\\YandereHook",
 				"-l",Environment.CurrentDirectory + "\\NextLib.dll"
 			};
-				string[] unhook = new string[] {"restore",
+			string[] unhook = new string[] {"restore",
 				"-d",Environment.CurrentDirectory + "\\YandereSimulator"
 			};
+			if (args.Length <= 0)
+			{
+				Console.WriteLine("NO ARGS");
+				
 				if (!File.Exists(Environment.CurrentDirectory + "\\hooked"))
 				{
 					try
@@ -63,43 +69,54 @@ namespace Hooker
 					}
 					return hook;
 				}
-				else
-				{
-					try
-					{
-						File.Delete(Environment.CurrentDirectory + "\\hooked");
-					}
-					catch (Exception ex)
-					{
-						Console.WriteLine("An exception occurred when deleting the hook file");
-						Console.WriteLine(ex.GetType().ToString());
-						Console.ReadLine();
-						Environment.Exit(1);
-					}
 
-					return unhook;
+			}
+			else if (args.Length >= 1 && args[0] == "unhook")
+			{
+				Console.WriteLine("UNHOOK");
+				try
+				{
+
+					File.Delete(Environment.CurrentDirectory + "\\hooked");
 				}
+				catch (Exception ex)
+				{
+					Console.WriteLine("An exception occurred when deleting the hook file");
+					Console.WriteLine(ex.GetType().ToString());
+					Console.ReadLine();
+					Environment.Exit(1);
+				}
+
+				return unhook;
 			}
 			return args;
 		}
+
+		static void LaunchGame()
+		{
+			var process = new System.Diagnostics.Process();
+			var startInfo = new System.Diagnostics.ProcessStartInfo
+			{
+				FileName = Environment.CurrentDirectory + "\\YandereSimulator\\YandereSimulator.exe"
+			};
+			process.StartInfo = startInfo;
+			process.Start();
+		}
 		static int Main(string[] args)
 		{
-			if (File.Exists(Environment.CurrentDirectory + "\\hooked"))
-			{
-				var process = new System.Diagnostics.Process();
-				var startInfo = new System.Diagnostics.ProcessStartInfo
+				YanderePrepare.PrepareMod();
+			if (!File.Exists("Scenes.txt"))
+				YanderePrepare.GetSceneNames();
+			if (!File.Exists("Resources.txt"))
+				YanderePrepare.GetResourcesNames();
+				if (File.Exists(Environment.CurrentDirectory + "\\hooked"))
 				{
-					FileName = Environment.CurrentDirectory + "\\YandereSimulator\\YandereSimulator.exe"
-				};
-				process.StartInfo = startInfo;
-				process.Start();
+					LaunchGame();
+					return 0;
+				}
 				
-				return 0;
-			}
-			YanderePrepare.PrepareMod();
-			YanderePrepare.GetSceneNames();
-			YanderePrepare.GetResourcesNames();
 			string[] actions = CustomArgs(args);
+			//Console.ReadLine();
 			// Operation
 			string invokedOperation = "";
 			// General options.
@@ -171,12 +188,26 @@ namespace Hooker
 				goto ERROR;
 			}
 
+			//Console.ReadLine();
 			// All OK
+			if (args.Length == 0)
+			{
+				LaunchGame();
+			}
 			return 0;
 
 			ERROR:
+			var tprocess = new System.Diagnostics.Process();
+			var tstartInfo = new System.Diagnostics.ProcessStartInfo
+			{
+				FileName = Environment.CurrentDirectory + "\\unhook.bat"
+			};
+			tprocess.StartInfo = tstartInfo;
+			tprocess.Start();
+			Console.ReadLine();
 			return 1;
 		}
+		
 	}
 }
 

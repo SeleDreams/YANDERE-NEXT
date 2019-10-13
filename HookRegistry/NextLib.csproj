@@ -33,13 +33,41 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AmplifyMotion">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\AmplifyMotion.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\Documents\PME FIX\UnityHook\hs_link\YandereSimulator_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="MoonSharp.Interpreter">
+      <HintPath>..\MoonSharp\MoonSharp.Interpreter.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="UnityEngine">
       <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>D:\Documents\PME FIX\UnityHook\hs_link\YandereSimulator_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ARModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.ARModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ClothModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.ClothModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterInputModule">
+      <HintPath>D:\Documents\PME FIX\UnityHook\hs_link\YandereSimulator_Data\Managed\UnityEngine.ClusterInputModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterRendererModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.ClusterRendererModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -47,15 +75,60 @@
       <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.DirectorModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.DirectorModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.GridModule">
+      <HintPath>D:\Documents\PME FIX\UnityHook\hs_link\YandereSimulator_Data\Managed\UnityEngine.GridModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>D:\Documents\PME FIX\UnityHook\hs_link\YandereSimulator_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>D:\Documents\PME FIX\UnityHook\hs_link\YandereSimulator_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.PerformanceReportingModule">
+      <HintPath>D:\Documents\PME FIX\UnityHook\hs_link\YandereSimulator_Data\Managed\UnityEngine.PerformanceReportingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>D:\Documents\PME FIX\UnityHook\hs_link\YandereSimulator_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.UIElementsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Plugins\scripts\" />
     <Folder Include="Properties\" />
+    <Folder Include="src\MoonSharp\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\HookRegistry.cs" />
     <Compile Include="src\hooks\YandereHook.cs" />
     <Compile Include="src\ReferenceLoader.cs" />
-    <Compile Include="src\YandereNext\ModLoader.cs" />
+    <Compile Include="src\YandereNext\GameObjectSkeleton.cs" />
+    <Compile Include="src\YandereNext\Debugger.cs" />
+    <Compile Include="src\YandereNext\InputSkeleton.cs" />
+    <Compile Include="src\YandereNext\ScriptLinking.cs" />
+    <Compile Include="src\YandereNext\TypeConverter.cs" />
+    <Compile Include="src\YandereNext\YandereScriptLoader.cs" />
+    <Compile Include="src\YandereNext\YandereNextEngine.cs" />
+    <Compile Include="src\YandereNext\ScriptManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
