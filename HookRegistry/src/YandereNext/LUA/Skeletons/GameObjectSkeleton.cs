@@ -5,10 +5,12 @@ using System.Text;
 using UnityEngine;
 using MoonSharp.Interpreter;
 
-namespace YandereNext
+namespace YandereNext.LUA.Skeletons
 {
+	[MoonSharpUserData]
 	public class GameObjectSkeleton
 	{
+
 		private GameObject _go;
 		
 		public GameObjectSkeleton()
@@ -16,6 +18,11 @@ namespace YandereNext
 			_go = null;
 		}
 		
+		public static GameObjectSkeleton CreateInstance()
+		{
+			return new GameObjectSkeleton();
+		}
+
 		public string name
 		{
 			get => GetName();

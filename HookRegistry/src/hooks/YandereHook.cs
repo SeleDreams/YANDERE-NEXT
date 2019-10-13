@@ -10,13 +10,10 @@ namespace Hooks
 			HookRegistry.Register(YandereNext.YandereNextEngine.StartHook);
 		}
 
-		// private void InitDynamicTypes() { }
-
 		public static string[] GetExpectedMethods()
 		{
 			return new string[] { "WelcomeScript::Start" };
 		}
-
 		
 	}
 }

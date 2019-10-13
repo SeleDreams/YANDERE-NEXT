@@ -2,11 +2,12 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace YandereNext
+namespace YandereNext.Debugging
 {
-	class Debugger : MonoBehaviour
+	public class LogConsole : MonoBehaviour
 	{
-		
+		static public bool log = true;
+
 		void Start()
 		{
 			pos = new Vector2(2, 2);
@@ -35,11 +36,11 @@ namespace YandereNext
 			var sArray = logMessages.ToArray();
 			logContent = String.Join("\n", sArray);
 		}
-		
+
 
 		void OnGUI()
 		{
-			if (YandereNextEngine.DisplayLog)
+			if (log)
 			{
 				var textRect = new Rect(pos, size);
 				GUI.Label(textRect, logContent, logStyle);

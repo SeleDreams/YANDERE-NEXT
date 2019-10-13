@@ -121,14 +121,15 @@
     <Compile Include="src\HookRegistry.cs" />
     <Compile Include="src\hooks\YandereHook.cs" />
     <Compile Include="src\ReferenceLoader.cs" />
-    <Compile Include="src\YandereNext\GameObjectSkeleton.cs" />
-    <Compile Include="src\YandereNext\Debugger.cs" />
-    <Compile Include="src\YandereNext\InputSkeleton.cs" />
-    <Compile Include="src\YandereNext\ScriptLinking.cs" />
-    <Compile Include="src\YandereNext\TypeConverter.cs" />
-    <Compile Include="src\YandereNext\YandereScriptLoader.cs" />
+    <Compile Include="src\YandereNext\Debugging\LogConsoleCommands.cs" />
+    <Compile Include="src\YandereNext\LUA\LUAScriptFunctionsCaller.cs" />
+    <Compile Include="src\YandereNext\LUA\Skeletons\GameObjectSkeleton.cs" />
+    <Compile Include="src\YandereNext\Debugging\LogConsole.cs" />
+    <Compile Include="src\YandereNext\LUA\Skeletons\InputSkeleton.cs" />
+    <Compile Include="src\YandereNext\LUA\LUAScriptLinking.cs" />
+    <Compile Include="src\YandereNext\LUA\LUAScriptLoader.cs" />
     <Compile Include="src\YandereNext\YandereNextEngine.cs" />
-    <Compile Include="src\YandereNext\ScriptManager.cs" />
+    <Compile Include="src\YandereNext\LUA\LUAScriptManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

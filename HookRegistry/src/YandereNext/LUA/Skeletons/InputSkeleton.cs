@@ -3,10 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
-namespace YandereNext
+using MoonSharp.Interpreter;
+
+namespace YandereNext.LUA.Skeletons
 {
+	[MoonSharpUserData]
 	public class InputSkeleton
 	{
+		public static InputSkeleton CreateInstance()
+		{
+			return new InputSkeleton();
+		}
 		public bool GetKey(string key)
 		{
 			return Input.GetKey(key);
