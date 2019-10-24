@@ -105,10 +105,10 @@ namespace Hooker
 		static int Main(string[] args)
 		{
 				YanderePrepare.PrepareMod();
-			if (!File.Exists("Scenes.txt"))
-				YanderePrepare.GetSceneNames();
-			if (!File.Exists("Resources.txt"))
-				YanderePrepare.GetResourcesNames();
+		//	if (!File.Exists("Scenes.txt"))
+			//	YanderePrepare.GetSceneNames();
+			//if (!File.Exists("Resources.txt"))
+			//	YanderePrepare.GetResourcesNames();
 				if (File.Exists(Environment.CurrentDirectory + "\\hooked"))
 				{
 					LaunchGame();

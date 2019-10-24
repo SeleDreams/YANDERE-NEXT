@@ -37,9 +37,8 @@
       <HintPath>..\hs_link\YandereSimulator_Data\Managed\AmplifyMotion.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\Documents\PME FIX\UnityHook\hs_link\YandereSimulator_Data\Managed\Assembly-CSharp.dll</HintPath>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="MoonSharp.Interpreter">
@@ -50,12 +49,24 @@
       <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.AccessibilityModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.AccessibilityModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AIModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.AIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.AnimationModule">
-      <HintPath>D:\Documents\PME FIX\UnityHook\hs_link\YandereSimulator_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.ARModule">
       <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.ARModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.ClothModule">
@@ -63,40 +74,107 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.ClusterInputModule">
-      <HintPath>D:\Documents\PME FIX\UnityHook\hs_link\YandereSimulator_Data\Managed\UnityEngine.ClusterInputModule.dll</HintPath>
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.ClusterInputModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.ClusterRendererModule">
       <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.ClusterRendererModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CrashReportingModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.CrashReportingModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.DirectorModule">
       <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.DirectorModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.GameCenterModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.GameCenterModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.GridModule">
-      <HintPath>D:\Documents\PME FIX\UnityHook\hs_link\YandereSimulator_Data\Managed\UnityEngine.GridModule.dll</HintPath>
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.GridModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>D:\Documents\PME FIX\UnityHook\hs_link\YandereSimulator_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.InputModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.JSONSerializeModule">
-      <HintPath>D:\Documents\PME FIX\UnityHook\hs_link\YandereSimulator_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.Networking.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ParticlesLegacyModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.ParticlesLegacyModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.PerformanceReportingModule">
-      <HintPath>D:\Documents\PME FIX\UnityHook\hs_link\YandereSimulator_Data\Managed\UnityEngine.PerformanceReportingModule.dll</HintPath>
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.PerformanceReportingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.Physics2DModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>D:\Documents\PME FIX\UnityHook\hs_link\YandereSimulator_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ScreenCaptureModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.ScreenCaptureModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SpatialTracking">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.SpatialTracking.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteMaskModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.SpriteMaskModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.StyleSheetsModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.StyleSheetsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.TerrainModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainPhysicsModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TilemapModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.TilemapModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.Timeline">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.Timeline.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.UI">
@@ -111,6 +189,55 @@
       <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.UIModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.UNETModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.UNETModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityConnectModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.UnityConnectModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.VehiclesModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.VehiclesModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.VideoModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.VideoModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.VRModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.VRModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.WebModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.WebModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.WindModule">
+      <HintPath>..\hs_link\YandereSimulator_Data\Managed\UnityEngine.WindModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityScript.Lang" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Plugins\scripts\" />
@@ -121,14 +248,20 @@
     <Compile Include="src\HookRegistry.cs" />
     <Compile Include="src\hooks\YandereHook.cs" />
     <Compile Include="src\ReferenceLoader.cs" />
-    <Compile Include="src\YandereNext\Debugging\LogConsoleCommands.cs" />
+    <Compile Include="src\YandereNext\LUA\Skeletons\LogConsoleSkeleton.cs" />
+    <Compile Include="src\YandereNext\Debugging\LogManager.cs" />
     <Compile Include="src\YandereNext\LUA\LUAScriptFunctionsCaller.cs" />
-    <Compile Include="src\YandereNext\LUA\Skeletons\GameObjectSkeleton.cs" />
+    <Compile Include="src\YandereNext\LUA\Skeletons\InstanceCreator.cs" />
     <Compile Include="src\YandereNext\Debugging\LogConsole.cs" />
     <Compile Include="src\YandereNext\LUA\Skeletons\InputSkeleton.cs" />
     <Compile Include="src\YandereNext\LUA\LUAScriptLinking.cs" />
     <Compile Include="src\YandereNext\LUA\LUAScriptLoader.cs" />
+    <Compile Include="src\YandereNext\LUA\Skeletons\ModelRetargeting.cs" />
+    <Compile Include="src\YandereNext\LUA\Skeletons\MonoBehaviourSkeleton.cs" />
+    <Compile Include="src\YandereNext\LUA\Skeletons\SceneManagerSkeleton.cs" />
+    <Compile Include="src\YandereNext\Tools\GeneralFunctions.cs" />
     <Compile Include="src\YandereNext\YandereNextEngine.cs" />
+    <Compile Include="src\YandereNext\YandereNextManager.cs" />
     <Compile Include="src\YandereNext\LUA\LUAScriptManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

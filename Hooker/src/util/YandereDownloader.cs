@@ -4,6 +4,7 @@ using System.Net.NetworkInformation;
 using System.Text;
 using System.IO;
 using System.IO.Compression;
+using System.Linq;
 
 namespace Hooker.src.util
 {
@@ -13,10 +14,12 @@ namespace Hooker.src.util
 		public bool isDownloading { get => _downloading; }
 		public int Progress { get => _progress; }
 		public const string BaseURL = "https://yanderesimulator.com";
-		private string GameURL = "http://dl.yanderesimulator.com/latest.zip";
+		public const string GameURL = "http://dl.yanderesimulator.com/latest.zip";
+		public readonly string ModAPI;
 
 		public YandereDownloader()
 		{
+			ModAPI = File.ReadLines(Environment.CurrentDirectory + "\\mods.txt").First();
 		}
 
 		public bool DownloadURLS()
@@ -27,6 +30,11 @@ namespace Hooker.src.util
 		public bool DownloadGame()
 		{
 			return Download(GameURL);
+		}
+
+		public bool DownloadAPI()
+		{
+			return Download(ModAPI);
 		}
 
 		public bool ExtractFile(Stream filestream, string output)
@@ -44,7 +52,7 @@ namespace Hooker.src.util
 					int data;
 					while ((data = filestream.ReadByte()) > -1)
 					{
-							outputStream.WriteByte((byte)data);
+						outputStream.WriteByte((byte)data);
 					}
 				};
 				return true;
@@ -57,12 +65,60 @@ namespace Hooker.src.util
 				return false;
 			}
 		}
+
 		public bool ExtractGame()
 		{
-			Console.WriteLine("Starting game extraction");
+			string outPath =  Environment.CurrentDirectory + "\\YandereSimulator\\";
+			string gamePath = Environment.CurrentDirectory + "\\" + Path.GetFileName(GameURL);
+			if (!Directory.Exists(outPath) || !File.Exists(outPath + "\\YandereSimulator.exe"))
+				return Extract(gamePath, outPath);
+			else
+				Console.WriteLine("Game already extracted");
+				return true;
+		}
+
+		public bool ExtractAPI()
+		{
+			Console.WriteLine("EXTRACTING API");
+			string outputPath = Environment.CurrentDirectory + "\\YandereSimulator\\YandereSimulator_Data\\StreamingAssets\\Yandere_Next";
+			if (!Directory.Exists(outputPath))
+			{
+				DirectoryInfo dir = Directory.CreateDirectory(Environment.CurrentDirectory + "\\temp");
+
+				try
+				{
+					var temp = Extract(Environment.CurrentDirectory + "\\" + Path.GetFileName(ModAPI), dir.FullName);
+					var directories = dir.GetDirectories();
+					foreach (var d in directories)
+					{
+						if (d.Name.Contains("YANDERE-NEXT"))
+						{
+							Directory.Move(d.FullName, outputPath);
+						}
+					}
+					dir.Delete();
+					File.Delete(Environment.CurrentDirectory + "\\" + Path.GetFileName(ModAPI));
+
+					return true;
+				}
+				catch
+				{
+					return false;
+				}
+			}
+			else
+			{
+				Console.WriteLine("Mod api already extracted");
+				return true;
+			}
+		}
+
+		public bool Extract(string filePath, string outputDir)
+		{
+			Console.WriteLine("Starting extraction");
 			try
 			{
-				using (var archive = new ZipArchive(File.OpenRead(Path.GetFileName(GameURL))))
+				using (var archive = new ZipArchive(File.OpenRead(Path.GetFileName(filePath))))
 				{
 					int i = 0;
 					foreach (ZipArchiveEntry file in archive.Entries)
@@ -72,7 +128,7 @@ namespace Hooker.src.util
 						{
 							string filename = file.FullName;
 							Console.WriteLine("Extracting " + filename);
-							string output = Environment.CurrentDirectory + "\\YandereSimulator\\" + filename;
+							string output = outputDir + "\\" + filename;
 							bool result = ExtractFile(stream, output);
 							if (!result)
 							{
@@ -87,12 +143,11 @@ namespace Hooker.src.util
 			}
 			catch (Exception ex)
 			{
-				Console.WriteLine("An error occurred while opening the game archive, it's probably corrupted");
-				Console.WriteLine("Try to redownload the game archive by deleting the YandereSimulator directory and latest.zip");
+				Console.WriteLine("An error occurred while opening the archive, it's probably corrupted");
+				Console.WriteLine("Try to redownload the archive by deleting it");
 				Console.WriteLine(ex.GetType().ToString() + " : " + ex.Message);
 				return false;
 			}
-
 
 		}
 		public bool Download(string url)

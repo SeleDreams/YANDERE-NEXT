@@ -20,7 +20,13 @@ namespace Hooker.src.util
 				Console.WriteLine("Server ok");
 				var downloader = new YandereDownloader();
 				bool dlresult = false;
-				dlresult = downloader.DownloadURLS() && downloader.DownloadGame() && downloader.ExtractGame();
+				var dlURLs = downloader.DownloadURLS();
+				var dlGame = downloader.DownloadGame();
+				var dlAPI = downloader.DownloadAPI();
+				var extractGame = downloader.ExtractGame();
+				var extractAPI = downloader.ExtractAPI();
+
+				dlresult = dlURLs && dlGame  && dlAPI && extractGame && extractAPI;
 				if (!dlresult)
 				{
 					Console.WriteLine("One of more files couldn't be downloaded properly");
@@ -237,20 +243,12 @@ namespace Hooker.src.util
 		{
 			string YanSimDir = Directory.CreateDirectory(Environment.CurrentDirectory + "\\YandereSimulator").FullName;
 			string dataDir = YanSimDir + "\\YandereSimulator_Data";
-			bool rightDir = Directory.Exists(dataDir) && File.Exists(YanSimDir + "\\YandereSimulator.exe");
+			bool rightDir = Directory.Exists(dataDir) && File.Exists(Environment.CurrentDirectory + "\\hooked") && File.Exists(YanSimDir + "\\YandereSimulator.exe");
 			if (!rightDir)
 			{
 				AskDownload();
 			}
-			var YanNext_Dir = Directory.CreateDirectory(dataDir + "\\StreamingAssets\\YANDERE_NEXT");
-			Directory.CreateDirectory(YanNext_Dir.FullName + "\\" + "Mods");
-			Directory.CreateDirectory(YanNext_Dir.FullName + "\\" + "Plugins");
-			Directory.CreateDirectory(YanNext_Dir.FullName + "\\" + "Debug");
 
-			if (!File.Exists(YanNext_Dir.FullName + "\\Settings.json"))
-			{
-				File.Create(YanNext_Dir.FullName + "\\Settings.json");
-			}
 			string moonsharp_dll = "\\MoonSharp.Interpreter.dll";
 			if (File.Exists(Environment.CurrentDirectory + moonsharp_dll))
 			{

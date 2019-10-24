@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using UnityEngine;
 using MoonSharp.Interpreter;
 
 namespace YandereNext.LUA.Skeletons
 {
-	[MoonSharpUserData]
 	public class InputSkeleton
 	{
 		public static InputSkeleton CreateInstance()

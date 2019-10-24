@@ -3,6 +3,10 @@ using UnityEngine;
 using MoonSharp.Interpreter;
 using YandereNext.Debugging;
 using YandereNext.LUA.Skeletons;
+using UnityEngine.SceneManagement;
+using System.IO;
+using YandereNext.Tools;
+using MoonSharp.Interpreter.Interop;
 
 namespace YandereNext.LUA
 {
@@ -26,7 +30,7 @@ namespace YandereNext.LUA
 			}
 			catch (Exception ex)
 			{
-				if (ex is SyntaxErrorException || ex is ScriptRuntimeException)
+				if (!(ex is ArgumentException))
 				{
 					Debug.Log(ex.GetType().ToString() + " : " + ex.Message);
 				}
@@ -41,49 +45,79 @@ namespace YandereNext.LUA
 			LinkFunctions();
 			Debug.Log("Linking Data");
 			LinkData();
-			Debug.Log("Linking Static Classes");
-			LinkStaticClasses();
-			Debug.Log("Linking Classes");
-			LinkClasses();
-		}
-	
-		public static void RegisterTypes()
-		{
-			//UserData.RegistrationPolicy = InteropRegistrationPolicy.Automatic;
-			UserData.RegisterType<GameObjectSkeleton>();
-			UserData.RegisterType<InputSkeleton>();
 		}
 
+		public static void SendToLUA<T>(Func<T> method = null)
+		{
+			UserData.RegisterType<T>();
+			Type t = typeof(T);
+			SetGlobals(t.Name, t);
+			if (method != null)
+			{
+				SetGlobals(method.Method.Name, method);
+			}
+			//Debug.Log(t.Name);
+		}
+
+		public static void RegisterTypes()
+		{
+			//UserData.RegistrationPolicy = InteropRegistrationPolicy.;
+			SendToLUA(InstanceCreator.New_GameObject);
+			SendToLUA<UnityEngine.Object>();
+			SendToLUA<Input>();
+			SendToLUA<Debug>();
+			SendToLUA<SceneManager>();
+			SendToLUA<AssetBundle>();
+			SendToLUA(InstanceCreator.New_Vector3);
+			SendToLUA(InstanceCreator.New_Vector2);
+			SendToLUA<Transform>();
+			SendToLUA<Resources>();
+			SendToLUA(InstanceCreator.New_Object);
+			SendToLUA<MonoBehaviour>();
+			SendToLUA<LogConsole>();
+			SendToLUA<ModelRetarget>();
+			SendToLUA<Camera>();
+		}
 		// Links static functions to LUA
 		public static void LinkFunctions()
 		{
 			var logAction = (Action<string>)Debug.Log;
 			SetGlobals("print", logAction);
-
-			var displayLog = (Action<bool>)LogConsoleCommands.DisplayLog;
-			SetGlobals("DisplayLog", displayLog);
-
-			var toggleLog = (Action)LogConsoleCommands.ToggleLog;
-			SetGlobals("ToggleLog", toggleLog);
-		}
-
-		// Links classes that can be instantiated in LUA
-		public static void LinkClasses()
-		{
-			var goSkeleton = (Func<GameObjectSkeleton>)GameObjectSkeleton.CreateInstance;
-			SetGlobals("GameObject", goSkeleton);
-		}
-
-		//Links static classes to LUA
-		public static void LinkStaticClasses()
-		{
-			SetGlobals("Input", InputSkeleton.CreateInstance());
+			var tFromString = (Func<string, Type>)GeneralFunctions.GetTypeFromString;
+			SetGlobals("GetTypeFromString", tFromString);
+			var getT = (Func<UserData, Type>)GeneralFunctions.GetType;
+			SetGlobals("GetType", getT);
+			var inherits = (Func<Type, Type, bool>)GeneralFunctions.Inherits;
+			SetGlobals("Inherits", inherits);
+			var objectOfType = (Func<string, UnityEngine.Object>)GeneralFunctions.FindObjectOfType;
+			SetGlobals("FindObjectOfType", objectOfType);
+			var hiddenObjects = (Func<string, GameObject[]>)GeneralFunctions.FindHiddenObjects;
+			SetGlobals("FindHiddenObjects", hiddenObjects);
+			var setHair = (Action<int>)GeneralFunctions.SetHairstyle;
+			SetGlobals("SetHairstyle", setHair);
+			var setAccessory = (Action<int>)GeneralFunctions.SetAccessory;
+			SetGlobals("SetAccessory", setAccessory);
+			var getStudent = (Func<int,GameObject>)GeneralFunctions.GetStudent;
+			SetGlobals("GetStudent", getStudent);
+			var setPersona = (Action<int>)GeneralFunctions.SetPersona;
+			SetGlobals("SetPersona", setPersona);
+			var setStudentHair = (Action<int,string>)GeneralFunctions.UpdateStudentHair;
+			SetGlobals("SetStudentHairstyle", setStudentHair);
+			var fixCam = (Action)GeneralFunctions.FixStreetCamera;
+			SetGlobals("FixCamera", fixCam);
+			var unlockMech = (Action)GeneralFunctions.UnlockMech;
+			SetGlobals("UnlockMech", unlockMech);
+			var spawn = (Action)GeneralFunctions.SpawnOsana;
+			SetGlobals("SpawnOsana", spawn);
 		}
 
 		// Links properties returning informations to LUA
 		public static void LinkData()
 		{
-			SetGlobals("YN_CurrentMod", YandereNextEngine.CurrentMod);
+			SetGlobals("RootDir", YandereNextManager.RootDir);
+			SetGlobals("PluginsDir", YandereNextManager.PluginsDir);
+			SetGlobals("ModDir", YandereNextManager.ModDir);
+			SetGlobals("BundlesDir", YandereNextManager.BundlesDir);
 		}
 	}
 }

@@ -1,4 +1,3 @@
-using System;
 namespace Hooks
 {
 	[RuntimeHook]
@@ -7,7 +6,7 @@ namespace Hooks
 
 		public Hook()
 		{
-			HookRegistry.Register(YandereNext.YandereNextEngine.StartHook);
+			HookRegistry.Register(YandereNext.YandereNextManager.StartHook);
 		}
 
 		public static string[] GetExpectedMethods()

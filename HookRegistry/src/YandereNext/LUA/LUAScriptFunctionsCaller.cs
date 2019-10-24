@@ -11,27 +11,33 @@ namespace YandereNext.LUA
 		LUAScriptFunctionsCaller()
 		{
 			SceneManager.sceneLoaded += OnSceneLoaded;
+			SceneManager.sceneUnloaded += OnSceneUnloaded;
 			DontDestroyOnLoad(gameObject);
 		}
 	
 		void Awake()
 		{			
-			LUAScriptLinking.CallFunction("_Awake");
+			LUAScriptLinking.CallFunction("Awake");
 		}
 
 		void Start()
 		{
-			LUAScriptLinking.CallFunction("_Start");
+			LUAScriptLinking.CallFunction("Start");
 		}
 
 		void Update()
 		{
-			LUAScriptLinking.CallFunction("_Update");
+			LUAScriptLinking.CallFunction("Update");
 		}
 
 		void OnSceneLoaded(Scene scene, LoadSceneMode mode)
 		{
-			LUAScriptLinking.CallFunction("_OnSceneLoaded", scene.name, mode);
+			LUAScriptLinking.CallFunction("OnSceneLoaded", scene.name, mode);
+		}
+
+		void OnSceneUnloaded(Scene scene)
+		{
+			LUAScriptLinking.CallFunction("OnSceneUnloaded", scene.name);
 		}
 
 	}
